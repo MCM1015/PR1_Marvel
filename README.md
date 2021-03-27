@@ -2,6 +2,9 @@
 
 # Overview - Project Description
 
+The purpose of this project is to allow Marvel Fans to look up some basic information about their favorite characters. 
+This webpage will provide users with a short bio of the character, a list of comics and movies the character is in and upon selection of a movie they will see a trailer from said movie. 
+
 # User Story
 As a Marvel Comics Fan
 
