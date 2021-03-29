@@ -4,17 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://marvelapp.com/styleguide/overview/introduction">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css"
+        integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Marvel Characters.....Bio and recent trailers</title>
 </head>
 
 <body>
     <header>
         <h1>Marvel Character Search</h1>
     </header>
-    <div id="char-dropdown"></div>
-    <div id="search-history"></div>
-    <div><button id="clear-history"></button>Clear</div>
+    <div id="char-dropdown" class="pure-u-1">
+        <label for="cars">Choose a car:</label>
+
+        <select name="cars" id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select>
+    </div>
+    <div id="search-history" class="pure-u-1">
+        <p>Search History...</p>
+        <button id="btnClear" class="pure-button pure-button-primary">Clear</button>
+    </div>
+
+
+
     <footer>
         <h2>Developed by THE Agile Dev Team</h2>
     </footer>

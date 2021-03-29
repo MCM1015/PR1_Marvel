@@ -1,0 +1,38 @@
+header {
+  background-color: #ff4949;
+  text-align: center;
+  color: white;
+  padding: 10px;
+}
+body {
+  height: 100%vh;
+}
+#char-dropdown {
+  width: 100%;
+  background-color: #ff4949;
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+}
+
+#search-history {
+  width: 100%;
+  background-color: #ff4949;
+  margin-top: 10px;
+}
+
+#clear-history {
+  width: 100%;
+  background-color: #ff4949;
+  margin-top: 10px;
+}
+#btnClear {
+  margin: 2px;
+}
+footer {
+  background-color: #ff4949;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+}
