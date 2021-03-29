@@ -1,0 +1,70 @@
+
+<!-- saved from url=(0087)file:///Users/reginaldmace/Desktop/BootCamp/My%20Homework/weather-dashboard/index.html? -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Weather Dashboard_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Weather Dashboard_files/style.css">
+
+    <title>Weather Dashboard</title>
+</head>
+
+
+<body><header>
+    <h1>Weather Dashboard</h1>
+</header>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 search-city">
+                <h3>Search for a City:</h3>
+                <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid">
+                        <form class="d-flex">
+                            <input id="search-field" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button id="search-button" class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                                </svg></button>
+                        </form>
+                        <div id="searchHistory"></div>
+                        <div><button type="button" class="btn btn-primary">Clear History</button></div>
+
+                    </div>
+                </nav>
+
+            </div>
+            <div class="col-sm-9">
+                <div id=" current-city-now" class="ccn">
+                    <h2><span id="c-day"></span></h2>
+                    <h2 id="city-name"><span id="c-day"></span></h2>
+                    <ul id="city-weather">
+                        <li>Temperature: <span id="c-temp"></span></li>
+                        <li>Humidity: <span id="c-humi"></span></li>
+                        <li>Wind Speed: <span id="c-ws"></span></li>
+                        <li>UV Index: <span id="c-uv"></span></li>
+                    </ul>
+
+                </div>
+                <div id="forecast-div" style="display: none;">
+                    <h2 id="current-city-name">5 Day Forecast:</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <section></section>
+    <script src="./Weather Dashboard_files/jquery-3.5.1.slim.min.js">
+    </script>
+    <script src="./Weather Dashboard_files/moment.min.js"></script>
+
+
+    <script src="./Weather Dashboard_files/bootstrap.bundle.min.js"></script>
+    <script src="./Weather Dashboard_files/script.js"></script>
+
+
+</body></html>

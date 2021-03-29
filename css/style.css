@@ -1,38 +1,85 @@
+* {
+  box-sizing: border-box;
+}
 header {
-  background-color: #ff4949;
+  /*background-image: url("hero_image.jpeg");*/
   text-align: center;
+  background-color: black;
   color: white;
-  padding: 10px;
+  padding: 20px;
+  width: 100%;
 }
 body {
-  height: 100%vh;
+  background-color: rgb(236, 29, 36);
+  height: 100%;
 }
-#char-dropdown {
-  width: 100%;
-  background-color: #ff4949;
-  margin-top: 10px;
+#header-html {
+  margin-left: 150px;
+  float: left;
+}
+#search-value {
+  width: 400px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+#searchBtn {
+  background-color: rgb(236, 29, 36);
+  margin-top: 20px;
+}
+img {
+  height: 400px;
+  width: 500px;
+}
+
+#header-input {
+  float: right;
+}
+#main-content {
+  margin: 0 auto;
+}
+#character-info {
+  margin-left: 400px;
+  margin-top: 20px;
+  color: rgb(114, 5, 5);
   text-align: center;
-  color: white;
-}
-
-#search-history {
-  width: 100%;
-  background-color: #ff4949;
-  margin-top: 10px;
-}
-
-#clear-history {
-  width: 100%;
-  background-color: #ff4949;
-  margin-top: 10px;
-}
-#btnClear {
-  margin: 2px;
 }
 footer {
-  background-color: #ff4949;
-  text-align: center;
+  background-color: black;
   color: white;
-  padding: 10px;
-  margin-top: 10px;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+#character-image {
+  height: 500px;
+  width: 300px;
+  background-color: white;
+  /* margin-left: 20px; */
+  margin-right: 30px;
+}
+#character-bio {
+  height: 500px;
+  width: 300px;
+  background-color: white;
+  /* margin-left: 20px; */
+  margin-right: 30px;
+}
+#character-comics {
+  height: 500px;
+  width: 300px;
+  background-color: white;
+  /* margin-left: 20px; */
+  /*   margin-right: 20px;
+ */
+}
+#character-video {
+  height: 500px;
+  width: 960px;
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: rgb(114, 5, 5);
+  text-align: center;
+}
+@media (min-width: 980px) {
 }
