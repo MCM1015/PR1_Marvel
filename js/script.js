@@ -1,20 +1,31 @@
 console.log("connection");
+var searchBtn = document.querySelector("#searchBtn");
+var characterName = " ";
 
-var ts = Date.now();
-console.log(ts);
+function searchCharacter() {
+  characterName = document.getElementById("search-value");
+  getCharacterName(characterName);
+}
 
-fetch(
-  "https://gateway.marvel.com:443/v1/public/characters?name=thor&apikey=22cb76a0a50613bcff0104d06cd9ec76",
+function getCharacterName(characterName) {
+  var apiKey = "22cb76a0a50613bcff0104d06cd9ec76";
+  var requestUrl =
+    "https://gateway.marvel.com:443/v1/public/characters?name=" +
+    characterName +
+    "&apiKey=" +
+    apiKey;
+  fetch(requestUrl)
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
+}
 
-  {
-    // referrer: "https://developer.marvel.com/fake.html",
-    // referrerPolicy: "origin",
-    mode: "cors",
-    //credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    cache: "no-cache",
-  }
-);
+searchBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  searchCharacter();
+  console.log("Clicked");
+});
