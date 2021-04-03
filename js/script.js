@@ -3,6 +3,30 @@ var characterImage = document.querySelector("#character-image");
 var characterBio = document.querySelector("#character-bio");
 var characterComics = document.querySelector("#character-comics");
 
+/* function getAPI() {
+  var ts = "abcdefghijk";
+  var priv_key = "22cb76a0a50613bcff0104d06cd9ec76";
+  var pub_key = "c2f699921bff1ced8007cabf50b956ca19c7fee5";
+  var hash = CryptoJS.MD5(ts + priv_key + pub_key).toString();
+  console.log(hash);
+  fetch(
+    
+    "http://gateway.marvel.com/v1/public/comics?ts=" +
+      ts +
+      "&apikey=" +
+      priv_key +
+      "&hash=" +
+      hash 
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
+getAPI(); */
+
 /* function getAPI(name) {
   var ts = Date.now();
   console.log(ts);
@@ -24,7 +48,7 @@ var characterComics = document.querySelector("#character-comics");
     .then(function (data) {
       return data;
     });
-} */
+}  */
 
 function apiCrazy() {
   var data = {
@@ -453,15 +477,38 @@ var apiData = apiCrazy();
 console.log(apiData);
 console.log(apiData.data.results);
 console.log(apiData.data.results[0].description);
-characterBio.innerHTML = apiData.data.results[0].description;
-characterComics.innerHTML = apiData.data.results[0].comics.items[0].name;
+characterBio = apiData.data.results[0].description;
+var credits = "Data provided by Marvel. © 2021 MARVEL";
+
+//characterBio.append(characterBio);
+$(
+  `
+          <div>
+            <p id="apiBio">${characterBio}</p>
+          </div>
+        `
+).appendTo("#character-bio");
+
+//characterComics.innerHTML = apiData.data.results[0].comics.items[0].name;
 characterImage.innerHTML =
-  '<img src="http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350/portrait_incredible.jpg"/>';
+  '<img id="char-image" src="http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350/portrait_incredible.jpg"/>';
 
 console.log(characterComics);
 for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
   var addComic = apiData.data.results[0].comics.items[i].name;
   var newPara = document.createElement("li");
-  newPara.appendChild(addComic);
-  //characterComics.append(newPara);
+  console.log(addComic);
+  $(`
+          <div class="comic-list">
+            <p class="c-issue"><strong>${addComic}</strong></p>
+          </div>
+        `).appendTo("#character-comics");
 }
+
+$(".c-issue").click(function () {
+  alert("clicked");
+  $(".character-modal").show();
+});
+$(".modal-close").click(function () {
+  $(".modal-window").hide();
+});
