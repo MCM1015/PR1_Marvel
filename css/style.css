@@ -82,11 +82,7 @@ footer {
   margin-left: 150px;
   border-radius: 5px;
 }
-/* #description-header {
-  width: 100%;
-  background-color: black;
-  color: white;
-} */
+
 #character-comics {
   overflow: scroll;
   height: 400px;
@@ -120,16 +116,6 @@ footer {
   padding: 5px;
   border-radius: 5px;
 }
-/* #character-video {
-  height: 500px;
-  width: 960px;
-  background-color: #bfd1e0;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: rgb(114, 5, 5);
-  text-align: center;
-  border-radius: 5px;
-} */
 
 @media (min-width: 980px) {
 }

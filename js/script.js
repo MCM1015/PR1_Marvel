@@ -27,7 +27,7 @@ var characterComics = document.querySelector("#character-comics");
 }
 getAPI(); */
 
-/* function getAPI(name) {
+function getAPI(name, callback) {
   var ts = Date.now();
   console.log(ts);
   fetch(
@@ -46,9 +46,9 @@ getAPI(); */
       return response.json();
     })
     .then(function (data) {
-      return data;
+      callback(data);
     });
-}  */
+}
 
 function apiCrazy() {
   var data = {
@@ -505,10 +505,10 @@ for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
         `).appendTo("#character-comics");
 }
 
-$(".c-issue").click(function () {
+/* $(".c-issue").click(function () {
   alert("clicked");
   $(".character-modal").show();
 });
 $(".modal-close").click(function () {
   $(".modal-window").hide();
-});
+}); */
