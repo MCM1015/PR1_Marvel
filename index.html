@@ -8,6 +8,9 @@
         integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+
     <title>Marvel Characters.....Bio and recent trailers</title>
 </head>
 
@@ -30,38 +33,54 @@
             </div>
 
     </header>
-    <div class="pure-u-1-2" id="character-info">
+    <div id="character-info">
         <div class="pure-g">
             <div class="pure-g ">
                 <!-- Marvel API Image Response -->
-                <div class="pure-u-1-3" id="character-image">
+                <div class="pure-u-1 pure-u-md-1-3" id="character-image">
                     <p>Image</p>
                 </div>
                 <!-- Marvel API Character.description response -->
                 <div class="pure-u-1-3" id="character-bio">
-                    <p>Description/Bio</p>
+                    <div id="description-header">
+                        <h2>Character Description</h2>
+                    </div>
+
                 </div>
                 <!-- Marvel API Character.comics -->
-                <div class="pure-u-1-3" id="character-comics">
-                    <p>Comics that feature this character</p>
+                <div class="pure-u-1 pure-u-md-1-3" id="character-comics">
+                    <h2>Comics that feature this character</h2>
                 </div>
                 <!-- YouTube API Character Trailer-->
             </div>
         </div>
         <div class="pure-g">
-            <div class="pure-u-1-3 pure-g" id="character-video">
+            <div class="pure-u-1 pure-u-md-1-3" id="character-video">
                 <p>Video Trailer</p><img src="hero_image.jpeg" alt="image">
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+
+
+
     <footer>
         <div>
-            <p>Created by: THE Agile DEV Team</p>
+            <p>Created by: THE Agile DEV Team; Data provided by Marvel. © 2021 MARVEL</p>
         </div>
     </footer>
 
     </div>
+
+
+    <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
     <script src="js/script.js"></script>
+
+    <script>
+
+    </script>
 </body>
 
 </html>
