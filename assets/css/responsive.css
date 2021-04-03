@@ -1,14 +1,14 @@
 .container {
   display: grid;
   height: 100vh;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 1.5fr 1.5fr 0.2fr;
+  grid-template-columns: repeat(1fr, 4);
+  grid-template-rows: 0.2fr 1fr 1fr 0.2fr;
   grid-template-areas:
     "header header header header"
     "character-image character-bio character-comics search-history"
     "character-video character-video character-video character-video"
     "footer footer footer footer";
-  grid-gap: 0.5rem;
+  grid-gap: 0.1rem;
 }
 header {
   background-color: black;
@@ -16,17 +16,14 @@ header {
 }
 
 #character-image {
-  background-color: aqua;
   grid-area: character-image;
 }
 #character-bio {
-  background-color: aquamarine;
   grid-area: character-bio;
   margin-left: 100px;
 }
 
 #character-comics {
-  background-color: burlywood;
   grid-area: character-comics;
   margin-left: 100px;
 }
@@ -45,7 +42,7 @@ footer {
 @media only screen and(max-width: 550px) {
   .container {
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr 2fr;
+    grid-template-rows: 0.4fr 2.2fr 2.2fr 2.2fr 2.2fr 2.2fr 0.4fr;
     grid-template-areas:
       "header"
       "character-image"

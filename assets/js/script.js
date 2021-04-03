@@ -5,26 +5,26 @@ var characterComics = document.querySelector("#character-comics");
 var characterSearch = document.getElementById("search-value");
 var characterArray = [];
 var searchHistory = $("#search-history");
-var youTubeKey = "AIzaSyAysXnmSzRoDDq4Yjg1D_Q7wzmd09wcJaU"
+var youTubeKey = "AIzaSyAysXnmSzRoDDq4Yjg1D_Q7wzmd09wcJaU";
 
 onLoad();
 
-//store in local storage 
+//store in local storage
 function storageSet() {
   characterArray.push(characterName);
-  localStorage.setItem('charactername', JSON.stringify(characterArray));
+  localStorage.setItem("charactername", JSON.stringify(characterArray));
 }
 
 // get from local storage and append to html on initial load
 function onLoad() {
-  if (localStorage.getItem('charactername') != '') {
-    var characterStore = JSON.parse(localStorage.getItem('charactername'));
+  if (localStorage.getItem("charactername") != "") {
+    var characterStore = JSON.parse(localStorage.getItem("charactername"));
     if (characterStore != null) {
       for (var i = 0; i < characterStore.length; i++) {
-        var btn = $('<button>');
+        var btn = $("<button>");
         btn.text(characterStore[i]);
         searchHistory.append(btn);
-        btn.on('click', function(event) {
+        btn.on("click", function (event) {
           characterName = event.target.textContent;
           console.log(characterName);
           youTubeVideo();
@@ -36,24 +36,24 @@ function onLoad() {
 
 //append each new search results to html
 function onClick() {
-  if (localStorage.getItem('charactername') != '') {
-    var characterStore = JSON.parse(localStorage.getItem('charactername'));
+  if (localStorage.getItem("characterName") != "") {
+    var characterStore = JSON.parse(localStorage.getItem("characterName"));
     if (characterStore != null) {
-      var btn = $('<button>');
-      btn.text(characterStore[(characterStore.length) - 1]);
+      var btn = $("<button>");
+      btn.text(characterStore[characterStore.length - 1]);
       searchHistory.append(btn);
-      btn.on('click', function(event) {
+      btn.on("click", function (event) {
         characterName = event.target.textContent;
         youTubeVideo();
-      }); 
+      });
     }
   }
 }
 
-
 //Character name Search
 function searchCharacter() {
   characterName = characterSearch.value;
+  getAPI(characterName, renderCharacter);
   youTubeVideo();
   storageSet();
   onClick();
@@ -66,18 +66,21 @@ searchBtn.addEventListener("click", function (e) {
   console.log("Clicked");
 });
 
-
-// youTube Character movie trailer 
+// youTube Character movie trailer
 function youTubeVideo() {
-  var youTubeAPIurl = 'https://youtube.googleapis.com/youtube/v3/search?channelId=UCvC4D8onUfXzvjTOM-dBfEA&q=' + characterName + '%20Movie%20Trailer&key=' + youTubeKey;
-  fetch(youTubeAPIurl, {
-  }).then(function (response) {
-    console.log(response);
-    return response.json();
-  })
+  var youTubeAPIurl =
+    "https://youtube.googleapis.com/youtube/v3/search?channelId=UCvC4D8onUfXzvjTOM-dBfEA&q=" +
+    characterName +
+    "%20Movie%20Trailer&key=" +
+    youTubeKey;
+  fetch(youTubeAPIurl, {})
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
     .then(function (data) {
       console.log(data);
-      var i = Math.floor(Math.random() * (data.items.length));
+      var i = Math.floor(Math.random() * data.items.length);
       console.log(i);
       var videoID = data.items[i].id.videoId;
       console.log(videoID);
@@ -85,8 +88,6 @@ function youTubeVideo() {
       document.getElementById("video").src = videoSRC;
     });
 }
-
-
 
 /* function getAPI() {
   var ts = "abcdefghijk";
@@ -112,7 +113,7 @@ function youTubeVideo() {
 }
 getAPI(); */
 
-/* function getAPI(name) {
+function getAPI(name, callback) {
   var ts = Date.now();
   console.log(ts);
   fetch(
@@ -131,11 +132,12 @@ getAPI(); */
       return response.json();
     })
     .then(function (data) {
-      return data;
+      console.log(data);
+      callback(data);
     });
-}  */
+}
 
-function apiCrazy() {
+function apiCrazy(name, callback) {
   var data = {
     code: 200,
     status: "Ok",
@@ -555,45 +557,45 @@ function apiCrazy() {
       ],
     },
   };
-  return data;
+  callback(data);
+}
+function renderCharacter(apiData) {
+  console.log(apiData);
+  console.log(apiData.data.results);
+  console.log(apiData.data.results[0].description);
+  characterBio = apiData.data.results[0].description;
+  var credits = "Data provided by Marvel. © 2021 MARVEL";
+
+  //characterBio.append(characterBio);
+  $(
+    `
+            <div>
+              <p id="apiBio">${characterBio}</p>
+            </div>
+          `
+  ).appendTo("#character-bio");
+
+  //characterComics.innerHTML = apiData.data.results[0].comics.items[0].name;
+  characterImage.innerHTML =
+    '<img id="char-image" src="http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350/portrait_incredible.jpg"/>';
+
+  console.log(characterComics);
+  for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
+    var addComic = apiData.data.results[0].comics.items[i].name;
+    var newPara = document.createElement("li");
+    console.log(addComic);
+    $(`
+            <div class="comic-list">
+              <p class="c-issue"><strong>${addComic}</strong></p>
+            </div>
+          `).appendTo("#character-comics");
+  }
 }
 
-var apiData = apiCrazy();
-console.log(apiData);
-console.log(apiData.data.results);
-console.log(apiData.data.results[0].description);
-characterBio = apiData.data.results[0].description;
-var credits = "Data provided by Marvel. © 2021 MARVEL";
-
-//characterBio.append(characterBio);
-$(
-  `
-          <div>
-            <p id="apiBio">${characterBio}</p>
-          </div>
-        `
-).appendTo("#character-bio");
-
-//characterComics.innerHTML = apiData.data.results[0].comics.items[0].name;
-characterImage.innerHTML =
-  '<img id="char-image" src="http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350/portrait_incredible.jpg"/>';
-
-console.log(characterComics);
-for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
-  var addComic = apiData.data.results[0].comics.items[i].name;
-  var newPara = document.createElement("li");
-  console.log(addComic);
-  $(`
-          <div class="comic-list">
-            <p class="c-issue"><strong>${addComic}</strong></p>
-          </div>
-        `).appendTo("#character-comics");
-}
-
-$(".c-issue").click(function () {
+/* $(".c-issue").click(function () {
   alert("clicked");
   $(".character-modal").show();
 });
 $(".modal-close").click(function () {
   $(".modal-window").hide();
-});
+}); */
