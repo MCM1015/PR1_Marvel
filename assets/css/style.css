@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+header {
+  /*background-image: url("hero_image.jpeg");*/
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  justify-content: center;
+}
+body {
+  background-color: rgb(236, 29, 36);
+  width: 100%;
+  height: 100%;
+}
+#header-html {
+  margin-left: 150px;
+  float: left;
+}
+
+#header-input {
+  float: right;
+}
+#search-value {
+  width: 400px;
+  margin-right: 10px;
+  margin-top: 20px;
+  height: 30px;
+  border-radius: 5px;
+}
+#searchBtn {
+  background-color: rgb(236, 29, 36);
+  margin-top: 20px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+img {
+  height: 400px;
+  width: 500px;
+}
+/* #main-content {
+  margin: 0 auto;
+} */
+/* #character-info {
+  margin-top: 20px;
+  color: rgb(114, 5, 5);
+  text-align: center;
+  width: 100%;
+  align-items: center;
+} */
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+#character-image {
+  height: 400px;
+  width: 400px;
+  background-color: white;
+  margin-left: 300px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 5px;
+}
+#char-image {
+  height: 400px;
+  width: 400px;
+  border-radius: 5px;
+}
+#character-bio {
+  height: 400px;
+  width: 400px;
+  background-color: #bfd1e0;
+  text-align: justify;
+  padding: 20px 10px 10px 10px;
+  margin-top: 50px;
+  margin-left: 150px;
+  border-radius: 5px;
+}
+/* #description-header {
+  width: 100%;
+  background-color: black;
+  color: white;
+} */
+#character-comics {
+  overflow: scroll;
+  height: 400px;
+  width: 400px;
+  background-color: #bfd1e0;
+  text-align: justify;
+  margin: 50px;
+  margin-left: 150px;
+  padding: 20px 10px 10px 10px;
+  border-radius: 5px;
+}
+#search-history {
+  overflow: scroll;
+  height: 400px;
+  width: 400px;
+  margin-right: 300px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #bfd1e0;
+  text-align: justify;
+  padding: 20px 10px 10px 10px;
+  border-radius: 5px;
+}
+
+/* #comic-list {
+  text-align: justify;
+  padding: 40px 10px 10px 10px;
+} */
+.c-issue {
+  background-color: rgb(236, 29, 36);
+  padding: 5px;
+  border-radius: 5px;
+}
+/* #character-video {
+  height: 500px;
+  width: 960px;
+  background-color: #bfd1e0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: rgb(114, 5, 5);
+  text-align: center;
+  border-radius: 5px;
+} */
+
+@media (min-width: 980px) {
+}
+.character-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0, 5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s opacity 0, 5s;
+}
+.modal {
+  background-color: #fff;
+  height: 40%;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+}
