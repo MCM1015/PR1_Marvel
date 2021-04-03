@@ -1,0 +1,58 @@
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 1.5fr 1.5fr 0.2fr;
+  grid-template-areas:
+    "header header header header"
+    "character-image character-bio character-comics search-history"
+    "character-video character-video character-video character-video"
+    "footer footer footer footer";
+  grid-gap: 0.5rem;
+}
+header {
+  background-color: black;
+  grid-area: header;
+}
+
+#character-image {
+  background-color: aqua;
+  grid-area: character-image;
+}
+#character-bio {
+  background-color: aquamarine;
+  grid-area: character-bio;
+  margin-left: 100px;
+}
+
+#character-comics {
+  background-color: burlywood;
+  grid-area: character-comics;
+  margin-left: 100px;
+}
+#search-history {
+  grid-area: search-history;
+  margin-left: 100px;
+}
+#character-video {
+  background-color: yellow;
+  grid-area: character-video;
+}
+footer {
+  background-color: black;
+  grid-area: footer;
+}
+@media only screen and(max-width: 550px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr 2fr;
+    grid-template-areas:
+      "header"
+      "character-image"
+      "character-bio"
+      "character-comics"
+      "search_history"
+      "character-video"
+      "footer";
+  }
+}
