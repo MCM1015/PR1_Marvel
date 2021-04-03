@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
     <title>Document</title>
 
 </head>
@@ -30,6 +32,7 @@
                 </div>
         </header>
 
+
         <div id="character-image">Character Image</div>
         <div id="character-bio">
             <h2>Character Description</h2>
@@ -40,7 +43,12 @@
         <div id="search-history">
             <h2>Search History:</h2>
         </div>
-        <div id="character-video">Character Video</div>
+        <div class="row" id="character-video">Character Video
+            <iframe id="video" width="600" height="400" src="" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+
 
         <footer>
             <div>
@@ -50,8 +58,11 @@
     </div>
 
     <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 
     </div>
 

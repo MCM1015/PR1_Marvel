@@ -2,6 +2,91 @@ console.log("connection");
 var characterImage = document.querySelector("#character-image");
 var characterBio = document.querySelector("#character-bio");
 var characterComics = document.querySelector("#character-comics");
+var characterSearch = document.getElementById("search-value");
+var characterArray = [];
+var searchHistory = $("#search-history");
+var youTubeKey = "AIzaSyAysXnmSzRoDDq4Yjg1D_Q7wzmd09wcJaU"
+
+onLoad();
+
+//store in local storage 
+function storageSet() {
+  characterArray.push(characterName);
+  localStorage.setItem('charactername', JSON.stringify(characterArray));
+}
+
+// get from local storage and append to html on initial load
+function onLoad() {
+  if (localStorage.getItem('charactername') != '') {
+    var characterStore = JSON.parse(localStorage.getItem('charactername'));
+    if (characterStore != null) {
+      for (var i = 0; i < characterStore.length; i++) {
+        var btn = $('<button>');
+        btn.text(characterStore[i]);
+        searchHistory.append(btn);
+        btn.on('click', function(event) {
+          characterName = event.target.textContent;
+          console.log(characterName);
+          youTubeVideo();
+        });
+      }
+    }
+  }
+}
+
+//append each new search results to html
+function onClick() {
+  if (localStorage.getItem('charactername') != '') {
+    var characterStore = JSON.parse(localStorage.getItem('charactername'));
+    if (characterStore != null) {
+      var btn = $('<button>');
+      btn.text(characterStore[(characterStore.length) - 1]);
+      searchHistory.append(btn);
+      btn.on('click', function(event) {
+        characterName = event.target.textContent;
+        youTubeVideo();
+      }); 
+    }
+  }
+}
+
+
+//Character name Search
+function searchCharacter() {
+  characterName = characterSearch.value;
+  youTubeVideo();
+  storageSet();
+  onClick();
+}
+
+//search button click
+searchBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  searchCharacter();
+  console.log("Clicked");
+});
+
+
+// youTube Character movie trailer 
+function youTubeVideo() {
+  var youTubeAPIurl = 'https://youtube.googleapis.com/youtube/v3/search?channelId=UCvC4D8onUfXzvjTOM-dBfEA&q=' + characterName + '%20Movie%20Trailer&key=' + youTubeKey;
+  fetch(youTubeAPIurl, {
+  }).then(function (response) {
+    console.log(response);
+    return response.json();
+  })
+    .then(function (data) {
+      console.log(data);
+      var i = Math.floor(Math.random() * (data.items.length));
+      console.log(i);
+      var videoID = data.items[i].id.videoId;
+      console.log(videoID);
+      var videoSRC = "https://www.youtube.com/embed/" + videoID;
+      document.getElementById("video").src = videoSRC;
+    });
+}
+
+
 
 /* function getAPI() {
   var ts = "abcdefghijk";
