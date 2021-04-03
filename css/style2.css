@@ -1,13 +1,13 @@
 .container {
   display: grid;
   height: 100vh;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 0.2fr 1.5fr 1.5fr 0.2fr;
   grid-template-areas:
-    "header header header"
-    "character-image character-bio character-comics"
-    "character-video character-video character-video"
-    "footer footer footer";
+    "header header header header"
+    "character-image character-bio character-comics search-history"
+    "character-video character-video character-video character-video"
+    "footer footer footer footer";
   grid-gap: 0.5rem;
 }
 header {
@@ -30,6 +30,10 @@ header {
   grid-area: character-comics;
   margin-left: 100px;
 }
+#search-history {
+  grid-area: search-history;
+  margin-left: 100px;
+}
 #character-video {
   background-color: yellow;
   grid-area: character-video;
@@ -40,15 +44,14 @@ footer {
 }
 @media only screen and(max-width: 550px) {
   .container {
-    height: 100vh;
-
     grid-template-columns: 1fr;
-    grid-template-rows: 1.4fr 100fr 1fr 1fr 1fr 0.4fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr 2fr;
     grid-template-areas:
       "header"
       "character-image"
       "character-bio"
       "character-comics"
+      "search_history"
       "character-video"
       "footer";
   }
