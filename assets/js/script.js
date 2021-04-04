@@ -133,7 +133,9 @@ function renderCharacter(apiData) {
   //console.log(characterImage);
   characterImageExt = apiData.data.results[0].thumbnail.extension;
   //console.log(characterImageExt);
-
+  //console.log(characterImage);
+  characterImageExt = apiData.data.results[0].thumbnail.extension;
+  //console.log(characterImageExt);
   if (characterImage == null) {
     characterImage.textContent = "Image unavailable";
   } else {
@@ -164,6 +166,11 @@ function renderCharacter(apiData) {
       var addComic = apiData.data.results[0].comics.items[i].name;
       var newPara = document.createElement("li");
       //console.log(addComic);
+    console.log(characterComics);
+    for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
+      var addComic = apiData.data.results[0].comics.items[i].name;
+      var newPara = document.createElement("li");
+      console.log(addComic);
       $(`
             <div class="comic-list">
               <p class="c-issue"><strong>${addComic}</strong></p>
@@ -172,7 +179,7 @@ function renderCharacter(apiData) {
     }
   }
 }
-
+  
 // Open
 function openModal() {
   modal.style.display = "block";
@@ -182,6 +189,7 @@ function openModal() {
 function closeModal() {
   modal.style.display = "none";
 }
+
 
 // Close If Outside Click Modal
 function outsideClick(e) {
@@ -209,3 +217,4 @@ searchBtn.addEventListener("click", function (e) {
 // FUNCTION CALLS
 // Loads search history on page load
 onLoad();
+
