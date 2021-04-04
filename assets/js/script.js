@@ -166,20 +166,21 @@ function renderCharacter(apiData) {
       var addComic = apiData.data.results[0].comics.items[i].name;
       var newPara = document.createElement("li");
       //console.log(addComic);
-    console.log(characterComics);
-    for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
-      var addComic = apiData.data.results[0].comics.items[i].name;
-      var newPara = document.createElement("li");
-      console.log(addComic);
-      $(`
+      console.log(characterComics);
+      for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
+        var addComic = apiData.data.results[0].comics.items[i].name;
+        var newPara = document.createElement("li");
+        console.log(addComic);
+        $(`
             <div class="comic-list">
               <p class="c-issue"><strong>${addComic}</strong></p>
             </div>
           `).appendTo("#character-comics");
+      }
     }
   }
 }
-  
+
 // Open
 function openModal() {
   modal.style.display = "block";
