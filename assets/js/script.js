@@ -148,10 +148,6 @@ function renderCharacter(apiData) {
   if (characterBio == " " || null) {
     characterBio.textContent = "Bio unavailable";
   } else {
-<<<<<<< HEAD
-=======
-    //characterBio.append(characterBio);
->>>>>>> main
     $(
       `
           <div>
@@ -163,19 +159,11 @@ function renderCharacter(apiData) {
   if (characterComics == null) {
     characterComics.textContent = " Comics unavailable";
   } else {
-<<<<<<< HEAD
     //console.log(characterComics);
     for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
       var addComic = apiData.data.results[0].comics.items[i].name;
       var newPara = document.createElement("li");
       //console.log(addComic);
-=======
-    console.log(characterComics);
-    for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
-      var addComic = apiData.data.results[0].comics.items[i].name;
-      var newPara = document.createElement("li");
-      console.log(addComic);
->>>>>>> main
       $(`
             <div class="comic-list">
               <p class="c-issue"><strong>${addComic}</strong></p>
