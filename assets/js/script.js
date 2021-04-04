@@ -22,8 +22,11 @@ function onLoad() {
     if (characterStore != null) {
       for (var i = 0; i < characterStore.length; i++) {
         var btn = $("<button>");
+        var lineBreak = $("li");
+        btn.addClass("searchAgain");
         btn.text(characterStore[i]);
         searchHistory.append(btn);
+        searchHistory.append(lineBreak);
         btn.on("click", function (event) {
           characterName = event.target.textContent;
           console.log(characterName);
@@ -33,15 +36,23 @@ function onLoad() {
     }
   }
 }
-
 //append each new search results to html
 function onClick() {
-  if (localStorage.getItem("characterName") != "") {
-    var characterStore = JSON.parse(localStorage.getItem("characterName"));
+  $("#character-image").removeClass("hidden");
+  $("#character-bio").removeClass("hidden");
+  $("#character-comics").removeClass("hidden");
+  $("#search-history").removeClass("hidden");
+  $("#marvel-image").addClass("hidden");
+  $("#modal").removeClass("hidden");
+  if (localStorage.getItem("charactername") != "") {
+    var characterStore = JSON.parse(localStorage.getItem("charactername"));
     if (characterStore != null) {
       var btn = $("<button>");
       btn.text(characterStore[characterStore.length - 1]);
+      btn.addClass("searchAgain");
+      var lineBreak = $("li");
       searchHistory.append(btn);
+      searchHistory.append(lineBreak);
       btn.on("click", function (event) {
         characterName = event.target.textContent;
         youTubeVideo();
@@ -49,7 +60,6 @@ function onClick() {
     }
   }
 }
-
 //Character name Search
 function searchCharacter() {
   characterName = characterSearch.value;
@@ -57,13 +67,18 @@ function searchCharacter() {
   youTubeVideo();
   storageSet();
   onClick();
+  characterBio.innerHTML = " ";
 }
 
 //search button click
 searchBtn.addEventListener("click", function (e) {
   e.preventDefault();
   searchCharacter();
-  console.log("Clicked");
+  $("#search-value").val("");
+  characterSearch.textContent = " ";
+  $("#character-image").empty();
+  $("#character-bio").empty();
+  $("#character-comics").empty();
 });
 
 // youTube Character movie trailer
@@ -88,31 +103,7 @@ function youTubeVideo() {
       document.getElementById("video").src = videoSRC;
     });
 }
-
-/* function getAPI() {
-  var ts = "abcdefghijk";
-  var priv_key = "22cb76a0a50613bcff0104d06cd9ec76";
-  var pub_key = "c2f699921bff1ced8007cabf50b956ca19c7fee5";
-  var hash = CryptoJS.MD5(ts + priv_key + pub_key).toString();
-  console.log(hash);
-  fetch(
-    
-    "http://gateway.marvel.com/v1/public/comics?ts=" +
-      ts +
-      "&apikey=" +
-      priv_key +
-      "&hash=" +
-      hash 
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-    });
-}
-getAPI(); */
-
+// connect to Marvel API
 function getAPI(name, callback) {
   var ts = Date.now();
   console.log(ts);
@@ -136,7 +127,7 @@ function getAPI(name, callback) {
       callback(data);
     });
 }
-
+// fake connection
 function apiCrazy(name, callback) {
   var data = {
     code: 200,
@@ -564,38 +555,73 @@ function renderCharacter(apiData) {
   console.log(apiData.data.results);
   console.log(apiData.data.results[0].description);
   characterBio = apiData.data.results[0].description;
-  var credits = "Data provided by Marvel. © 2021 MARVEL";
+  characterImage = apiData.data.results[0].thumbnail.path;
+  console.log(characterImage);
+  characterImageExt = apiData.data.results[0].thumbnail.extension;
+  console.log(characterImageExt);
 
-  //characterBio.append(characterBio);
-  $(
-    `
-            <div>
-              <p id="apiBio">${characterBio}</p>
-            </div>
-          `
-  ).appendTo("#character-bio");
-
-  //characterComics.innerHTML = apiData.data.results[0].comics.items[0].name;
-  characterImage.innerHTML =
-    '<img id="char-image" src="http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350/portrait_incredible.jpg"/>';
-
-  console.log(characterComics);
-  for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
-    var addComic = apiData.data.results[0].comics.items[i].name;
-    var newPara = document.createElement("li");
-    console.log(addComic);
-    $(`
+  if (characterImage == null) {
+    characterImage.textContent = "Image unavailable";
+  } else {
+    $(
+      `
+              <div>
+               <img id="char-image" src="${characterImage}.${characterImageExt}">
+              </div>
+            `
+    ).appendTo("#character-image");
+  }
+  if (characterBio == " " || null) {
+    characterBio.textContent = "Bio unavailable";
+  } else {
+    //characterBio.append(characterBio);
+    $(
+      `
+          <div>
+            <p id="apiBio">${characterBio}</p>
+          </div>
+        `
+    ).appendTo("#character-bio");
+  }
+  if (characterComics == null) {
+    characterComics.textContent = " Comics unavailable";
+  } else {
+    console.log(characterComics);
+    for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
+      var addComic = apiData.data.results[0].comics.items[i].name;
+      var newPara = document.createElement("li");
+      console.log(addComic);
+      $(`
             <div class="comic-list">
               <p class="c-issue"><strong>${addComic}</strong></p>
             </div>
           `).appendTo("#character-comics");
+    }
   }
 }
+// Get DOM Elements
+const modal = document.querySelector("#my-modal");
+const modalBtn = document.querySelector("#modal-btn");
+const closeBtn = document.querySelector(".close");
 
-/* $(".c-issue").click(function () {
-  alert("clicked");
-  $(".character-modal").show();
-});
-$(".modal-close").click(function () {
-  $(".modal-window").hide();
-}); */
+// Events
+modalBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", outsideClick);
+
+// Open
+function openModal() {
+  modal.style.display = "block";
+}
+
+// Close
+function closeModal() {
+  modal.style.display = "none";
+}
+
+// Close If Outside Click
+function outsideClick(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+}
