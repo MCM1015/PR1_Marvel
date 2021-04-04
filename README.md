@@ -18,9 +18,8 @@ Acceptance Criteria:
     -It’s done when I can pick from a drop down list of Marvel Characters then I’m directed to a new page.
     -It's done when the search history displays on the main page.
     -It's done when the search history persists.
-        -Extra - It's done when the clear button clears the search history
         -Extra - It's done when the search history is clickable.
-        -Extra - It's done when you are directed to the bio page of the character selected from the search history.
+        -Extra - It's done when only the top 3 character searches display.
     -It's done when I can view the character’s bio, and recent work.
     -It's done when a headshot of the character displays in the bio
         -Extra - It's done when the comic page displays as an icon next to the list of comic books
@@ -34,10 +33,24 @@ Acceptance Criteria:
 
 # Usage
 All you need to use the Marvel Character Search is internet access and a web browser!
-Follow this link ()
+Follow this link (https://mcm1015.github.io/PR1_Marvel/)
 
 Website Preview: 
 ![Marvel Character Search](./assets/images/Website_Preview.png)
 
 # Credits
+
+https://developers.google.com/youtube/iframe_api_reference
+
+https://developers.google.com/youtube/v3/docs/search
+
+https://purecss.io/
+
+https://developer.marvel.com/documentation/getting_started
+
+
+
+
+
+
 
