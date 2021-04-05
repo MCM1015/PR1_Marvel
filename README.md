@@ -16,7 +16,7 @@ When I search for a character then I can see their biography, recent works and a
 Acceptance Criteria:
 
     -It’s done when I can pick from a drop down list of Marvel Characters then I’m directed to a new page.
-    -It's done when the search history displays on the main page.
+    -It's done when the search history displays.
     -It's done when the search history persists.
         -Extra - It's done when the search history is clickable.
         -Extra - It's done when only the top 3 character searches display.
@@ -44,7 +44,7 @@ https://developers.google.com/youtube/iframe_api_reference
 
 https://developers.google.com/youtube/v3/docs/search
 
-https://purecss.io/
+https://tailwindcss.com/docs 
 
 https://developer.marvel.com/documentation/getting_started
 
