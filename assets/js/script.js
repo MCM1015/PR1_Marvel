@@ -2,6 +2,7 @@
 var characterImage = document.querySelector("#character-image");
 var characterBio = document.querySelector("#character-bio");
 var characterComics = document.querySelector("#character-comics");
+var characterContainer = document.querySelector("#character-container");
 var characterSearch = document.getElementById("search-value");
 var characterArray = [];
 var searchHistory = $("#search-history");
@@ -46,8 +47,8 @@ function onClick() {
   $("#character-image").removeClass("hidden");
   $("#character-bio").removeClass("hidden");
   $("#character-comics").removeClass("hidden");
+  $("#character-container").removeClass("hidden");
   $("#search-history").removeClass("hidden");
-  $("#marvel-image").addClass("hidden");
   $("#modal").removeClass("hidden");
   if (localStorage.getItem("charactername") != "") {
     var characterStore = JSON.parse(localStorage.getItem("charactername"));
@@ -71,7 +72,7 @@ function onClick() {
 function searchCharacter() {
   characterName = characterSearch.value;
   getAPI(characterName, renderCharacter);
-  youTubeVideo();
+  //youTubeVideo();
   storageSet();
   onClick();
   characterBio.innerHTML = " ";
@@ -223,4 +224,5 @@ searchBtn.addEventListener("click", function (e) {
 // FUNCTION CALLS
 // Loads search history on page load
 onLoad();
+
 
