@@ -38,6 +38,8 @@ Follow this link (https://mcm1015.github.io/PR1_Marvel/)
 Website Preview: 
 ![Marvel Character Search](./assets/images/Website_Preview.png)
 
+If you want to view the working code follow this link [HTML CODE](index.html), [JavaScript](./assets/js/script.js) and this link [CSS CODE](./assets/css/style.css)
+
 # Credits
 
 https://developers.google.com/youtube/iframe_api_reference
@@ -53,9 +55,23 @@ https://developer.marvel.com/documentation/getting_started
 The [MIT](LICENSE) license was chosen for this project. 
 
 # Contact Info
-Mary McClernan - Mary.C.McClernan@gmail.com
-Reginald Mace - 
-Jacob Black - 
+Mary McClernan: 
+
+Mary.C.McClernan@gmail.com
+
+https://github.com/MCM1015
+
+Reginald Mace:
+
+reginaldmace36@gmail.com 
+
+https://github.com/reggiemace
+
+Jacob Black:
+
+https://github.com/JacobBlack1
+
+
 
 
 
