@@ -11,7 +11,6 @@ const modal = document.querySelector("#my-modal");
 const modalBtn = document.querySelector("#modal-btn");
 const closeBtn = document.querySelector(".close");
 
-
 //FUNCTIONS
 
 // store in local storage
@@ -60,10 +59,10 @@ function onClick() {
       searchHistory.append(btn);
       searchHistory.append(lineBreak);
       //btn.on("click", function (event) {
-        //characterName = event.target.textContent;
-        //youTubeVideo();
-        //getAPI(characterName, renderCharacter);
-        //characterBio.innerHTML = " ";
+      //characterName = event.target.textContent;
+      //youTubeVideo();
+      //getAPI(characterName, renderCharacter);
+      //characterBio.innerHTML = " ";
       //});
     }
   }
@@ -91,7 +90,7 @@ function youTubeVideo() {
       if (response.status != 200) {
         var videoSRC = "https://www.youtube.com/embed/TcMBFSGVi1c";
         document.getElementById("video").src = videoSRC;
-      } 
+      }
       return response.json();
     })
     .then(function (data) {
@@ -110,8 +109,8 @@ function getAPI(name, callback) {
   //console.log(ts);
   fetch(
     "https://gateway.marvel.com:443/v1/public/characters?name=" +
-    name +
-    "&apikey=22cb76a0a50613bcff0104d06cd9ec76",
+      name +
+      "&apikey=22cb76a0a50613bcff0104d06cd9ec76",
     {
       mode: "cors",
       headers: {
@@ -131,6 +130,8 @@ function getAPI(name, callback) {
 
 // Character info pull from Marvel API
 function renderCharacter(apiData) {
+  var characterName = apiData.data.results[0].name;
+
   //console.log(apiData);
   //console.log(apiData.data.results);
   //console.log(apiData.data.results[0].description);
@@ -159,6 +160,7 @@ function renderCharacter(apiData) {
     $(
       `
           <div>
+          <h1 class="apiHeader"><strong>${characterName}<strong><h1>
             <p id="apiBio">${characterBio}</p>
           </div>
         `
@@ -168,6 +170,7 @@ function renderCharacter(apiData) {
     characterComics.textContent = " Comics unavailable";
   } else {
     //console.log(characterComics);
+
     for (var i = 0; i < apiData.data.results[0].comics.items.length; i++) {
       var addComic = apiData.data.results[0].comics.items[i].name;
       var newPara = document.createElement("li");
@@ -179,6 +182,7 @@ function renderCharacter(apiData) {
         console.log(addComic);
         $(`
             <div class="comic-list">
+           
               <p class="c-issue"><strong>${addComic}</strong></p>
             </div>
           `).appendTo("#character-comics");
@@ -196,7 +200,6 @@ function openModal() {
 function closeModal() {
   modal.style.display = "none";
 }
-
 
 // Close If Outside Click Modal
 function outsideClick(e) {
@@ -224,5 +227,3 @@ searchBtn.addEventListener("click", function (e) {
 // FUNCTION CALLS
 // Loads search history on page load
 onLoad();
-
-
