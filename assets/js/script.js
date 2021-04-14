@@ -72,7 +72,7 @@ function onClick() {
 function searchCharacter() {
   characterName = characterSearch.value;
   getAPI(characterName, renderCharacter);
-  //youTubeVideo();
+  youTubeVideo();
   storageSet();
   onClick();
   characterBio.innerHTML = " ";
