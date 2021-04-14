@@ -48,6 +48,15 @@ https://tailwindcss.com/docs
 
 https://developer.marvel.com/documentation/getting_started
 
+# License
+
+The [MIT](LICENSE) license was chosen for this project. 
+
+# Contact Info
+Mary McClernan - Mary.C.McClernan@gmail.com
+Reginald Mace - 
+Jacob Black - 
+
 
 
 
