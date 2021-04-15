@@ -161,7 +161,7 @@ function renderCharacter(apiData) {
       `
           <div>
           <h1 class="apiHeader"><strong>${characterName}<strong><h1>
-            <p id="apiBio">${characterBio}</p>
+            <p class="apiBio">${characterBio}</p>
           </div>
         `
     ).appendTo("#character-bio");
@@ -183,7 +183,7 @@ function renderCharacter(apiData) {
         $(`
             <div class="comic-list">
            
-              <p class="c-issue"><strong>${addComic}</strong></p>
+              <p class="apiBio"><strong>${addComic}</strong></p>
             </div>
           `).appendTo("#character-comics");
       }
